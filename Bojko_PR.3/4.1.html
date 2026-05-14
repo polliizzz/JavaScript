@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4.1 — Система акаунтів</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Tahoma, sans-serif;
+      background: #1a120b;
+      color: #fff7ed;
+      padding: 35px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #fb923c;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #fdba74;
+      margin-bottom: 35px;
+    }
+
+    .panel {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 35px;
+    }
+
+    button {
+      border: none;
+      border-radius: 14px;
+      padding: 14px 22px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .user-button {
+      background: #ea580c;
+      color: white;
+    }
+
+    .admin-button {
+      background: #c2410c;
+      color: white;
+    }
+
+    .list-button {
+      background: #f59e0b;
+      color: #2b1700;
+    }
+
+    #cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #2b1d13;
+      border: 2px solid #7c2d12;
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .card h2 {
+      margin-bottom: 12px;
+      color: #fdba74;
+    }
+
+    .card p {
+      margin-bottom: 8px;
+      color: #ffedd5;
+    }
+
+    .about {
+      margin-top: 35px;
+      background: #2b1d13;
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .about h3 {
+      margin-bottom: 12px;
+      color: #fb923c;
+    }
+
+    .about li {
+      margin-bottom: 8px;
+      color: #fed7aa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔥 Система акаунтів</h1>
+
+  <p class="subtitle">
+    Робота з класами та наслідуванням у JavaScript
+  </p>
+
+  <div class="panel">
+
+    <button class="user-button" id="createUser">
+      👤 Створити User
+    </button>
+
+    <button class="admin-button" id="createAdmin">
+      🛡️ Створити Admin
+    </button>
+
+    <button class="list-button" id="showAccounts">
+      📋 Усі акаунти
+    </button>
+
+  </div>
+
+  <div id="cards">
+
+  </div>
+
+  <div class="about">
+
+    <h3>Що реалізовано:</h3>
+
+    <ul>
+      <li>Клас User</li>
+      <li>Клас Admin через extends</li>
+      <li>Перевизначення методу display()</li>
+      <li>Валідація введення</li>
+      <li>prompt(), alert(), console.log()</li>
+    </ul>
+
+  </div>
+
+<script>
+"use strict";
+
+const accounts = [];
+
+const cards = document.getElementById("cards");
+
+// User
+class User {
+
+  constructor(username, age, profession) {
+
+    this.username = username;
+    this.age = age;
+    this.profession = profession;
+  }
+
+  display() {
+
+    return `
+👤 USER
+
+Ім'я: ${this.username}
+Вік: ${this.age}
+Професія: ${this.profession}
+    `;
+  }
+}
+
+// Admin
+class Admin extends User {
+
+  constructor(username, age, profession, access) {
+
+    super(username, age, profession);
+
+    this.access = access;
+  }
+
+  display() {
+
+    return `
+🛡️ ADMIN
+
+Ім'я: ${this.username}
+Вік: ${this.age}
+Професія: ${this.profession}
+Доступ: ${this.access}
+    `;
+  }
+}
+
+// Створення картки
+function addCard(account, type) {
+
+  const div = document.createElement("div");
+
+  div.className = "card";
+
+  div.innerHTML = `
+    <h2>${type}</h2>
+
+    <p><b>Ім'я:</b> ${account.username}</p>
+
+    <p><b>Вік:</b> ${account.age}</p>
+
+    <p><b>Професія:</b> ${account.profession}</p>
+
+    ${account.access ? `<p><b>Доступ:</b> ${account.access}</p>` : ""}
+  `;
+
+  cards.appendChild(div);
+}
+
+// Додавання User
+document.getElementById("createUser").addEventListener("click", () => {
+
+  const username = prompt("Введіть ім'я:");
+  const age = Number(prompt("Введіть вік:"));
+  const profession = prompt("Введіть професію:");
+
+  if (
+    !username ||
+    !profession ||
+    age <= 0 ||
+    Number.isNaN(age)
+  ) {
+
+    alert("Помилка! Дані введено неправильно.");
+
+    return;
+  }
+
+  const user = new User(
+    username,
+    age,
+    profession
+  );
+
+  accounts.push(user);
+
+  addCard(user, "👤 User");
+
+  console.log(user.display());
+
+  alert(user.display());
+});
+
+// Додавання Admin
+document.getElementById("createAdmin").addEventListener("click", () => {
+
+  const username = prompt("Введіть ім'я адміністратора:");
+  const age = Number(prompt("Введіть вік:"));
+  const profession = prompt("Введіть професію:");
+  const access = prompt("Введіть рівень доступу:");
+
+  if (
+    !username ||
+    !profession ||
+    !access ||
+    age <= 0 ||
+    Number.isNaN(age)
+  ) {
+
+    alert("Помилка! Дані введено неправильно.");
+
+    return;
+  }
+
+  const admin = new Admin(
+    username,
+    age,
+    profession,
+    access
+  );
+
+  accounts.push(admin);
+
+  addCard(admin, "🛡️ Admin");
+
+  console.log(admin.display());
+
+  alert(admin.display());
+});
+
+// Список акаунтів
+document.getElementById("showAccounts").addEventListener("click", () => {
+
+  if (accounts.length === 0) {
+
+    alert("Акаунтів поки немає.");
+
+    return;
+  }
+
+  let text = "Список акаунтів:\n\n";
+
+  accounts.forEach((item, index) => {
+
+    text += `${index + 1}. ${item.username}\n`;
+
+  });
+
+  alert(text);
+});
+</script>
+
+</body>
+</html>

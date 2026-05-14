@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>4.2 — OOP: Beauty Studio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #fff;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #e5e7eb;
+      margin-bottom: 25px;
+    }
+
+    .tags {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .enc { background: #f472b6; }
+    .inh { background: #a78bfa; }
+    .pol { background: #60a5fa; }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    button {
+      border: none;
+      padding: 12px 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      color: white;
+    }
+
+    .client-btn { background: #ec4899; }
+    .makeup-btn { background: #8b5cf6; }
+    .hair-btn { background: #3b82f6; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(6px);
+      padding: 15px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .card h2 {
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #e5e7eb;
+      margin-bottom: 5px;
+    }
+
+    .info {
+      background: rgba(0,0,0,0.3);
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .info li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>💅 Beauty Studio OOP</h1>
+<p class="subtitle">Салон краси — демонстрація ООП у JavaScript</p>
+
+<div class="tags">
+  <div class="tag enc">Інкапсуляція</div>
+  <div class="tag inh">Наслідування</div>
+  <div class="tag pol">Поліморфізм</div>
+</div>
+
+<div class="buttons">
+  <button class="client-btn" id="addClient">💖 Клієнт</button>
+  <button class="makeup-btn" id="addMakeup">💄 Візажист</button>
+  <button class="hair-btn" id="addHair">💇‍♀️ Перукар</button>
+</div>
+
+<div class="grid" id="container"></div>
+
+<div class="info">
+  <h3>Пояснення OOP:</h3>
+  <ul>
+    <li><b>Інкапсуляція</b> — прихований бюджет клієнта (#budget)</li>
+    <li><b>Наслідування</b> — MakeupArtist і Hairstylist від Client</li>
+    <li><b>Поліморфізм</b> — метод service() працює по-різному</li>
+    <li><b>Абстракція</b> — JS не підтримує повну абстракцію</li>
+  </ul>
+</div>
+
+<script>
+"use strict";
+
+const people = [];
+const container = document.getElementById("container");
+
+// Базовий клас
+class Client {
+  #budget;
+
+  constructor(name, budget) {
+    this.name = name;
+    this.#budget = budget;
+  }
+
+  getBudget() {
+    return this.#budget;
+  }
+
+  service() {
+    return `${this.name} отримує послугу`;
+  }
+
+  info() {
+    return `
+      <h2>💖 ${this.name}</h2>
+      <p>Бюджет: ${this.#budget}$</p>
+    `;
+  }
+}
+
+// Візажист
+class MakeupArtist extends Client {
+  service() {
+    return `${this.name} робить макіяж 💄✨`;
+  }
+}
+
+// Перукар
+class Hairstylist extends Client {
+  service() {
+    return `${this.name} робить зачіску 💇‍♀️✨`;
+  }
+}
+
+// Відображення
+function render(person) {
+  const div = document.createElement("div");
+  div.className = "card";
+  div.innerHTML = person.info();
+  container.appendChild(div);
+}
+
+// Клієнт
+document.getElementById("addClient").onclick = () => {
+  const name = prompt("Ім'я клієнта:");
+  const budget = Number(prompt("Бюджет:"));
+
+  if (!name || budget <= 0) {
+    alert("Помилка!");
+    return;
+  }
+
+  const c = new Client(name, budget);
+  people.push(c);
+  render(c);
+
+  alert("Клієнта додано 💖");
+};
+
+// Візажист
+document.getElementById("addMakeup").onclick = () => {
+  const name = prompt("Ім'я візажиста:");
+  const budget = Number(prompt("Бюджет:"));
+
+  if (!name || budget <= 0) {
+    alert("Помилка!");
+    return;
+  }
+
+  const m = new MakeupArtist(name, budget);
+  people.push(m);
+  render(m);
+
+  alert("Візажиста додано 💄");
+};
+
+// Перукар
+document.getElementById("addHair").onclick = () => {
+  const name = prompt("Ім'я перукаря:");
+  const budget = Number(prompt("Бюджет:"));
+
+  if (!name || budget <= 0) {
+    alert("Помилка!");
+    return;
+  }
+
+  const h = new Hairstylist(name, budget);
+  people.push(h);
+  render(h);
+
+  alert("Перукаря додано 💇‍♀️");
+};
+</script>
+
+</body>
+</html>
