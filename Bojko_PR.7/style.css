@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #fff0f6;
+    --card: rgba(255, 255, 255, 0.75);
+    --primary: #ff4fa3;
+    --primary-hover: #ff2b8a;
+    --secondary: #ffc1dd;
+    --text: #5b3553;
+    --gray: #8f6d86;
+    --danger: #ff5d73;
+    --success: #ff89c2;
+    --shadow: rgba(255, 79, 163, 0.15);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background:
+        linear-gradient(135deg, #ffe4ef, #fff0f7);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 44px;
+    margin-bottom: 12px;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+header p {
+    color: var(--gray);
+    font-size: 18px;
+}
+
+.card {
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 28px;
+    padding: 28px;
+    margin-bottom: 28px;
+    box-shadow:
+        0 10px 35px var(--shadow);
+}
+
+.card h2 {
+    margin-bottom: 22px;
+    color: var(--primary);
+    font-size: 24px;
+}
+
+.todo-form {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+input {
+    flex: 1;
+    padding: 15px;
+    border-radius: 16px;
+    border: 2px solid transparent;
+    background: rgba(255,255,255,0.8);
+    font-size: 15px;
+    color: var(--text);
+    transition: 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 5px rgba(255, 79, 163, 0.15);
+}
+
+button {
+    border: none;
+    border-radius: 16px;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+    background: var(--primary);
+    color: white;
+    font-size: 14px;
+}
+
+button:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px) scale(1.02);
+}
+
+.todo-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    color: var(--gray);
+    font-size: 14px;
+}
+
+#taskList {
+    list-style: none;
+}
+
+.task-item {
+    background: rgba(255,255,255,0.8);
+    border-radius: 18px;
+    padding: 16px;
+    margin-bottom: 14px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow:
+        0 4px 12px rgba(255, 79, 163, 0.08);
+
+    animation: fadeIn 0.3s ease;
+}
+
+.task-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.task-text.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.complete-checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+}
+
+.delete-btn {
+    background: var(--danger);
+    padding: 10px 15px;
+    border-radius: 12px;
+}
+
+.delete-btn:hover {
+    background: #ff3657;
+}
+
+.secondary-btn {
+    background: #ffb6d6;
+    color: #7c3058;
+}
+
+.secondary-btn:hover {
+    background: #ff9fc8;
+}
+
+.danger-btn {
+    background: #ff6b81;
+}
+
+.danger-btn:hover {
+    background: #ff4f6b;
+}
+
+.buttons {
+    display: flex;
+    gap: 14px;
+    margin-top: 22px;
+}
+
+.array-results,
+.json-box {
+    margin-top: 20px;
+}
+
+.result-item {
+    background: rgba(255,255,255,0.8);
+    padding: 16px;
+    border-radius: 16px;
+    margin-bottom: 14px;
+}
+
+.result-item strong {
+    color: var(--primary);
+}
+
+pre {
+    background: rgba(255,255,255,0.85);
+    padding: 16px;
+    border-radius: 16px;
+    overflow-x: auto;
+    margin-top: 10px;
+    color: #c21875;
+    font-size: 14px;
+}
+
+.empty {
+    text-align: center;
+    padding: 20px;
+    color: var(--gray);
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 700px) {
+
+    .todo-form {
+        flex-direction: column;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    header h1 {
+        font-size: 34px;
+    }
+
+}

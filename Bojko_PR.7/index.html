@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практична робота №7</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Практична робота №7</h1>
+            <p>JSON • localStorage • Обробка даних</p>
+        </header>
+
+        <!-- TODO LIST -->
+        <section class="card">
+            <h2>To-Do List</h2>
+
+            <div class="todo-form">
+                <input 
+                    type="text" 
+                    id="taskInput" 
+                    placeholder="Введіть нове завдання..."
+                >
+
+                <button id="addTask">
+                    Додати
+                </button>
+            </div>
+
+            <div class="todo-info">
+                <span id="tasksCount">Всього завдань: 0</span>
+                <span id="completedCount">Виконано: 0</span>
+            </div>
+
+            <ul id="taskList"></ul>
+
+            <div class="buttons">
+                <button id="clearCompleted" class="secondary-btn">
+                    Видалити виконані
+                </button>
+
+                <button id="clearAll" class="danger-btn">
+                    Очистити все
+                </button>
+            </div>
+        </section>
+
+        <!-- JSON SECTION -->
+        <section class="card">
+            <h2>Робота з JSON</h2>
+
+            <button id="runJsonDemo">
+                Показати приклад JSON
+            </button>
+
+            <div class="json-box">
+                <h3>JSON.parse()</h3>
+                <pre id="jsonParseOutput"></pre>
+            </div>
+
+            <div class="json-box">
+                <h3>JSON.stringify()</h3>
+                <pre id="jsonStringifyOutput"></pre>
+            </div>
+        </section>
+
+        <!-- ARRAY METHODS -->
+        <section class="card">
+            <h2>Методи масивів</h2>
+
+            <button id="runArrayMethods">
+                Запустити обробку
+            </button>
+
+            <div class="array-results">
+
+                <div class="result-item">
+                    <strong>Оригінальний масив:</strong>
+                    <p id="originalArray"></p>
+                </div>
+
+                <div class="result-item">
+                    <strong>map() — квадрати:</strong>
+                    <p id="mapResult"></p>
+                </div>
+
+                <div class="result-item">
+                    <strong>filter() — парні:</strong>
+                    <p id="filterResult"></p>
+                </div>
+
+                <div class="result-item">
+                    <strong>reduce() — сума:</strong>
+                    <p id="reduceResult"></p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ERROR HANDLING -->
+        <section class="card">
+            <h2>Обробка помилок</h2>
+
+            <button id="showError">
+                Показати помилку JSON
+            </button>
+
+            <pre id="errorOutput"></pre>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
