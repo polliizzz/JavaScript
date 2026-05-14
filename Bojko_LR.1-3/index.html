@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конструктор резюме</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="left-panel">
+
+        <h1>Конструктор резюме</h1>
+
+        <div class="form-block">
+            <h2>Особисті дані</h2>
+
+            <input type="text" id="fullName" placeholder="Ім'я та прізвище">
+            <input type="email" id="email" placeholder="Email">
+            <input type="text" id="phone" placeholder="Телефон">
+            <input type="number" id="age" placeholder="Вік">
+
+            <textarea id="summary" placeholder="Коротко про себе"></textarea>
+        </div>
+
+        <div class="form-block">
+            <h2>Освіта</h2>
+
+            <input type="text" id="university" placeholder="Університет">
+            <input type="text" id="speciality" placeholder="Спеціальність">
+        </div>
+
+        <div class="form-block">
+            <h2>Досвід роботи</h2>
+
+            <input type="text" id="company" placeholder="Компанія">
+            <input type="text" id="position" placeholder="Посада">
+        </div>
+
+        <div class="form-block">
+            <h2>Навички</h2>
+
+            <textarea id="skills" placeholder="HTML, CSS, JavaScript"></textarea>
+        </div>
+
+        <div class="buttons">
+            <button id="createBtn">Створити резюме</button>
+            <button id="saveBtn">Зберегти</button>
+            <button id="clearBtn">Очистити</button>
+        </div>
+
+    </div>
+
+    <div class="right-panel">
+
+        <h1>Попередній перегляд</h1>
+
+        <div id="resumePreview"></div>
+
+    </div>
+
+</div>
+
+<script src="js/models.js"></script>
+<script src="js/validation.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
