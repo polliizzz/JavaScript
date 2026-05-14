@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff0f6;
+    color: #333;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: #ffdeeb;
+    border-bottom: 2px solid #f783ac;
+}
+
+h1 {
+    color: #d6336c;
+}
+
+h1 span {
+    color: #f06595;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+}
+
+input, select {
+    padding: 8px;
+    border: 1px solid #f783ac;
+    background: white;
+    border-radius: 8px;
+    outline: none;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #ffd6e7;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(240, 101, 149, 0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.badge {
+    color: #f06595;
+    font-weight: bold;
+}
