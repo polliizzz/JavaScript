@@ -1,0 +1,196 @@
+:root {
+    --main-pink: #ff4fa1;
+    --light-pink: #ffd8ea;
+    --bg-color: #fff5fa;
+    --white: #ffffff;
+    --text-color: #333;
+    --shadow: 0 10px 25px rgba(255, 79, 161, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #ffe3f1, #fff7fb);
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+
+    background: var(--white);
+
+    border-radius: 25px;
+
+    padding: 35px;
+
+    box-shadow: var(--shadow);
+}
+
+h1 {
+    text-align: center;
+    color: var(--main-pink);
+
+    font-size: 38px;
+
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #777;
+
+    margin-bottom: 30px;
+}
+
+.todo-box {
+    background: var(--bg-color);
+
+    border-radius: 20px;
+
+    padding: 25px;
+}
+
+.input-area {
+    display: flex;
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+input {
+    flex: 1;
+
+    padding: 15px;
+
+    border: 2px solid #ffd0e6;
+
+    border-radius: 14px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: var(--main-pink);
+
+    box-shadow: 0 0 10px rgba(255, 79, 161, 0.2);
+}
+
+button {
+    padding: 15px 22px;
+
+    border: none;
+
+    background: var(--main-pink);
+
+    color: white;
+
+    border-radius: 14px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff2b8a;
+
+    transform: translateY(-2px);
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    background: white;
+
+    margin-bottom: 12px;
+
+    padding: 15px 18px;
+
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    border-left: 6px solid var(--main-pink);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    animation: showTask 0.3s ease;
+}
+
+li:hover {
+    background: #ffe4f1;
+
+    transform: scale(1.02);
+
+    color: #d10068;
+}
+
+li::after {
+    content: "✖";
+
+    opacity: 0.5;
+
+    font-size: 14px;
+}
+
+.info-box {
+    margin-top: 25px;
+
+    background: #fff0f7;
+
+    border-radius: 18px;
+
+    padding: 20px;
+}
+
+.info-box h3 {
+    color: var(--main-pink);
+
+    margin-bottom: 10px;
+}
+
+.info-box p {
+    margin-bottom: 8px;
+
+    color: #555;
+}
+
+@keyframes showTask {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
