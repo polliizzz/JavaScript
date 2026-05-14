@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PokéPink API Lab</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header class="header">
+      <h1>🌸 PokéPink API Lab</h1>
+      <p>Асинхронність • Fetch • PokeAPI • Promises</p>
+    </header>
+
+    <section class="panel">
+      <h2>📡 Користувачі (JSONPlaceholder)</h2>
+      <button id="btnUsers">Завантажити users</button>
+      <pre id="usersBox"></pre>
+    </section>
+
+    <section class="panel">
+      <h2>🎀 Покемон Дек</h2>
+      <button id="btnPokemon">Знайти покемона</button>
+
+      <div id="pokemonArea" class="pokemon-area">
+        <p class="hint">Введи ім’я покемона для відображення карти</p>
+      </div>
+    </section>
+
+    <div id="error" class="error hidden"></div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
